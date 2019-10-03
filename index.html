@@ -6,12 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 
 <body>
+<main>
+	<section class="instructions">
+		<ul><li>Rock beats Scissors</li>
+		<li>Scissors beats Paper</li>
+		<li>Paper beats Rock</li>
+	</ul></section>
 
-    <script src="app.js"></script>
+	<section class="throws">
+		<label><input type="radio" value="rock" value="checked">Rock</label>
+		<label><input type="radio" value="scissors">Scissors</label>
+		<label><input type="radio" value="paper">Paper</label>
+	<input type="button" value="guess" id="guess-button">
+	<section class="feedback">
+		<div>Result: <span id="result"></span></div>
+		<div>Wins: <span id="wins-count"></span></div>
+		<div>Losses: <span id="losses-count"></span></div>
+		<div>Ties: <span id="ties-count"></span></div>
+	<div>Total Guesses: <span id="guesses-count"></span></div>
+
+	</section>
+	<script src="r-p-s.js" type="module"></script>
+</main>
 </body>
 
 </html>
