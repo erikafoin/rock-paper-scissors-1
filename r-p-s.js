@@ -27,11 +27,9 @@ const hardReset = () => {
 
 const playRound = () => {
     const selectedRadioButton = document.querySelector('input:checked');
-    console.log(selectedRadioButton.value);
     guesses++;
     let userPick = selectedRadioButton.value;
     let computerPick = getRandomThrow();
-    console.log(userPick);
     result = checkResult(userPick, computerPick);
     if (result === 'win') wins++;
     else if (result === 'lose') losses++;
