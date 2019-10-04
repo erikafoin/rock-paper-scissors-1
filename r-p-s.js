@@ -2,14 +2,14 @@ import { getRandomThrow } from './get-random-throw.js';
 import { checkResult } from './check-result.js';
 
 const guessButton = document.getElementById('guess-button');
-const selectedRadioButton = document.querySelector('input:checked');
 const resetButton = document.getElementById('reset-button');
+const winsSpan = document.getElementById('wins-count');
+const lossesSpan = document.getElementById('losses-count');
+const drawsSpan = document.getElementById('draws-count');
+const guessesSpan = document.getElementById('guesses-count');
+const resultsSpan = document.getElementById('result');
 
-const winsCount = document.getElementById('wins-count');
-const losesCount = document.getElementById('loses-count');
-const drawsCount = document.getElementById('draws-count');
-let guessesCount = document.getElementById('guesses-count');
-let resultDisplay = document.getElementById('result');
+//set some initial values
 let guesses = 0;
 let result = '';
 let wins = 0;
@@ -22,24 +22,31 @@ const hardReset = () => {
     wins = 0;
     losses = 0;
     draws = 0;
+    updateResults();
+};
+
+const playRound = () => {
+    const selectedRadioButton = document.querySelector('input:checked');
+    console.log(selectedRadioButton.value);
+    guesses++;
+    let userPick = selectedRadioButton.value;
+    let computerPick = getRandomThrow();
+    console.log(userPick);
+    result = checkResult(userPick, computerPick);
+    if (result === 'win') wins++;
+    else if (result === 'lose') losses++;
+    else draws++;
+    resultsSpan.textContent = 'You picked ' + userPick + '. Computer picked ' + computerPick + '. You ' + result + '.';
+    updateResults();
 };
 
 // define DOM utility function
 const updateResults = () => {
-    resultDisplay.textContent = result;
-    guessesCount.textContent = guesses;
-    winsCount.textContent = wins;
-    losesCount.textContent = losses;
-    drawsCount.textContent = draws;
+    guessesSpan.textContent = guesses;
+    winsSpan.textContent = wins;
+    lossesSpan.textContent = losses;
+    drawsSpan.textContent = draws;
 };
-
-const playRound = () => {
-    guessesCount++;
-    const userPick = selectedRadioButton.value;
-    checkResult(userPick, getRandomThrow());
-    updateResults();
-};
-
 
 // add event listeners
 guessButton.addEventListener('click', playRound);

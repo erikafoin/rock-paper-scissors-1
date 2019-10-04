@@ -1,5 +1,5 @@
 
-const checkResult = (player, computer) => {
+export const checkResult = (player, computer) => {
     if (player === computer) return 'draw';
     else if (player === 'rock') {
         if (computer === 'paper') {
@@ -26,5 +26,3 @@ const checkResult = (player, computer) => {
         }
     }
 };
-
-export default checkResult;
